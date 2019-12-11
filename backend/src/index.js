@@ -1,8 +1,6 @@
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
-const createServer = require('./createServer');
-
-const server = createServer();
+const server = require('./server');
 
 server.express.use(cookieParser());
 
