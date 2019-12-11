@@ -10,9 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "aws-lambda": "^0.1.2",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
     "graphql": "0.13.2",
     "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.14"
   },
   "devDependencies": {

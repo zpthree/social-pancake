@@ -12,10 +12,7 @@ function createServer() {
       Query,
       Mutation,
     },
-    context: {
-      db,
-      models,
-    },
+    context: req => ({ ...req, db, models }),
   });
 }
 
