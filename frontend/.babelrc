@@ -1,0 +1,4 @@
+{
+  "presets": ["next/babel"],
+  "plugins": ["styled-components", "@babel/plugin-syntax-optional-chaining"]
+}
