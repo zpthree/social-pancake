@@ -1,19 +1,9 @@
+import 'isomorphic-unfetch';
 import React from 'react';
 import App from 'next/app';
-import {
-  ApolloClient,
-  HttpLink,
-  InMemoryCache,
-  ApolloProvider,
-} from '@apollo/client';
-import { endpoint } from '../config';
-
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: endpoint,
-  }),
-});
+import { ApolloProvider } from '@apollo/client';
+import client from '../lib/createClient';
+import Page from '../components/Page';
 
 class MyApp extends App {
   static async getInitialProps(appContext) {
@@ -27,7 +17,9 @@ class MyApp extends App {
 
     return (
       <ApolloProvider client={client}>
-        <Component {...pageProps} />
+        <Page>
+          <Component {...pageProps} />
+        </Page>
       </ApolloProvider>
     );
   }
