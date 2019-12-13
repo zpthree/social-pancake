@@ -1,19 +1,23 @@
 const mongoose = require('mongoose');
-const User = require('./models/User');
+const UserModel = require('./models/UserModel');
+const PostModel = require('./models/PostModel');
 
 mongoose.set('useCreateIndex', true);
+mongoose.set('useFindAndModify', false);
 
-const connectDB = () =>
-  mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+const db = mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.Promise = global.Promise;
 
 const models = {
-  User,
+  User: UserModel,
+  Post: PostModel,
 };
 
 module.exports = {
-  connectDB,
+  db,
   models,
 };

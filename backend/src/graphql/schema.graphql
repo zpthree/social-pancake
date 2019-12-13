@@ -1,5 +1,6 @@
 type Query {
-  hello(name: String): String!
+  me: User
+  posts: [Post!]
 }
 
 type Mutation {
@@ -9,6 +10,9 @@ type Mutation {
     username: String!
     password: String!
   ): User!
+  updateUser(name: String, email: String, username: String): User!
+  createPost(content: String!): Post!
+  deletePost(id: ID!): SuccessMessage!
 }
 
 type User {
@@ -16,4 +20,16 @@ type User {
   name: String!
   email: String!
   username: String!
+  posts: [Post]
+}
+
+type Post {
+  id: ID!
+  content: String!
+  createdAt: Float
+  user: User!
+}
+
+type SuccessMessage {
+  message: String!
 }
