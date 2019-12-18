@@ -3,7 +3,7 @@ import React from 'react';
 import App from 'next/app';
 import { ApolloProvider } from '@apollo/client';
 import client from '../lib/createClient';
-import Page from '../components/Page';
+import '../public/styles/nprogress.css';
 
 class MyApp extends App {
   static async getInitialProps(appContext) {
@@ -17,9 +17,7 @@ class MyApp extends App {
 
     return (
       <ApolloProvider client={client}>
-        <Page>
-          <Component {...pageProps} />
-        </Page>
+        <Component {...pageProps} />
       </ApolloProvider>
     );
   }

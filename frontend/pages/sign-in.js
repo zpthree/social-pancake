@@ -1,11 +1,14 @@
 import React from 'react';
 import SignUpForm from '../components/SignUpForm';
+import SignInForm from '../components/SignInForm';
+import Page from '../components/Page';
 
 const SignInPage = () => (
-  <div>
-    <h2>Sign in</h2>
-    <SignUpForm />
-  </div>
+  <Page location="sign-in">
+    <h2>Sign up</h2>
+    <SignInForm />
+    {/* <SignUpForm /> */}
+  </Page>
 );
 
 export default SignInPage;

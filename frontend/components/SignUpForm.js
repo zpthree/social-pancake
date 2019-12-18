@@ -20,10 +20,10 @@ const CREATE_USER_QUERY = gql`
 `;
 
 const SignUpForm = () => {
-  const [name, setName] = useState('mike wazoksi');
-  const [username, setUsername] = useState('mikewazowski');
-  const [email, setEmail] = useState('mikewazowski@gmail.com');
-  const [password, setPassword] = useState('yahoo');
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [createUser, { loading, error, data }] = useMutation(CREATE_USER_QUERY);
 
   if (loading) return <p>Loading...</p>;

@@ -11,19 +11,20 @@ const Main = styled.main`
   margin: auto;
 `;
 
-const Page = ({ children }) => (
+const Page = ({ children, location }) => (
   <ThemeProvider theme={siteTheme}>
     <>
       <GlobalStyles />
       <Meta />
-      <Header />
+      {location !== 'sign-in' && <Header />}
       <Main>{children}</Main>
     </>
   </ThemeProvider>
 );
 
 Page.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
+  location: PropTypes.string,
 };
 
 export default Page;

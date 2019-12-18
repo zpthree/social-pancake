@@ -1,24 +1,51 @@
 import React from 'react';
+import Link from 'next/link';
 import { gql, useQuery } from '@apollo/client';
+import Page from '../components/Page';
 
-const CURRENT_USER_QUERY = gql`
-  query CURRENT_USER_QUERY {
-    me {
+const RECIPES_QUERY = gql`
+  query RECIPES_QUERY {
+    recipes {
       id
-      name
+      title
+      description
+      content
+      createdAt
+      user {
+        id
+        name
+        username
+      }
     }
   }
 `;
 
 const IndexPage = () => {
-  const { loading, error, data } = useQuery(CURRENT_USER_QUERY);
+  const { loading, error, data } = useQuery(RECIPES_QUERY);
 
-  if (loading) return <p>Loading...</p>;
+  console.log(data?.recipes);
 
   return (
-    <div>
-      <h1>Hello, {data.me?.name}.</h1>
-    </div>
+    <Page location="/">
+      {loading ? <p>Loading...</p> : (
+        <div>
+          <Link href="/u/zpthree">
+            <a>Zach Patrick</a>
+          </Link>
+          {data?.recipes.map(recipe => console.log(recipe) || (
+            <div style={{border: "1px solid #cacaca", padding: '2rem', margin: "1rem 0"}}>
+              <Link href={`/u/[slug]`} as={`/u/${recipe.user.username}`}>
+                <a>
+                  {recipe.user.name}
+                </a>
+              </Link>
+              <p>{recipe.title}</p>
+              <p>{recipe.description}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </Page>
   );
 };
 
