@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const UserModel = require('./models/UserModel');
-const PostModel = require('./models/PostModel');
+const RecipeModel = require('./models/RecipeModel');
 
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
@@ -14,7 +14,7 @@ mongoose.Promise = global.Promise;
 
 const models = {
   User: UserModel,
-  Post: PostModel,
+  Recipe: RecipeModel,
 };
 
 module.exports = {

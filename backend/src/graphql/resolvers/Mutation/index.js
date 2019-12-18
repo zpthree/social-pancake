@@ -1,7 +1,7 @@
 const UserMutation = require('./UserMutation');
-const PostMutation = require('./PostMutation');
+const RecipeMutation = require('./RecipeMutation');
 
 module.exports = {
   ...UserMutation,
-  ...PostMutation,
+  ...RecipeMutation,
 };

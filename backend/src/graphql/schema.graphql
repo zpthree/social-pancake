@@ -1,9 +1,13 @@
 type Query {
   me: User
-  posts: [Post!]
+  user(username: String!): User
+  recipe(id: ID!): Recipe!
+  recipes: [Recipe!]!
 }
 
 type Mutation {
+  signIn(email: String!, password: String!): User!
+  signOut: SuccessMessage
   createUser(
     name: String!
     email: String!
@@ -11,8 +15,14 @@ type Mutation {
     password: String!
   ): User!
   updateUser(name: String, email: String, username: String): User!
-  createPost(content: String!): Post!
-  deletePost(id: ID!): SuccessMessage!
+  createRecipe(
+    title: String!
+    description: String!
+    content: String!
+    image: String
+    largeImage: String
+  ): Recipe!
+  deleteRecipe(id: ID!): SuccessMessage!
 }
 
 type User {
@@ -20,11 +30,13 @@ type User {
   name: String!
   email: String!
   username: String!
-  posts: [Post]
+  recipes: [Recipe]
 }
 
-type Post {
+type Recipe {
   id: ID!
+  title: String!
+  description: String!
   content: String!
   createdAt: Float
   user: User!

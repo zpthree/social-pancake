@@ -23,10 +23,10 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  posts: [
+  recipes: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Post',
+      ref: 'Recipe',
     },
   ],
 });
