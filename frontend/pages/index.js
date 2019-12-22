@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 import Page from '../components/Page';
+import Recipes from '../components/Recipes';
 
 const RECIPES_QUERY = gql`
   query RECIPES_QUERY {
@@ -23,28 +25,9 @@ const RECIPES_QUERY = gql`
 const IndexPage = () => {
   const { loading, error, data } = useQuery(RECIPES_QUERY);
 
-  console.log(data?.recipes);
-
   return (
-    <Page location="/">
-      {loading ? <p>Loading...</p> : (
-        <div>
-          <Link href="/u/zpthree">
-            <a>Zach Patrick</a>
-          </Link>
-          {data?.recipes.map(recipe => console.log(recipe) || (
-            <div style={{border: "1px solid #cacaca", padding: '2rem', margin: "1rem 0"}}>
-              <Link href={`/u/[slug]`} as={`/u/${recipe.user.username}`}>
-                <a>
-                  {recipe.user.name}
-                </a>
-              </Link>
-              <p>{recipe.title}</p>
-              <p>{recipe.description}</p>
-            </div>
-          ))}
-        </div>
-      )}
+    <Page location="/" loading={loading}>
+      {data?.recipes && <Recipes recipes={data.recipes} />}
     </Page>
   );
 };

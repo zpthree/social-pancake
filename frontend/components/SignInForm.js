@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 import Router from 'next/router';
 import { CURRENT_USER_QUERY } from './Me';
 

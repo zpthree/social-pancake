@@ -5,19 +5,22 @@ import Header from './Header';
 import Meta from './Meta';
 import { GlobalStyles } from '../styles/global';
 import siteTheme from '../styles/theme';
+import Loading from './Loading';
 
 const Main = styled.main`
-  max-width: ${({ theme }) => theme.maxWidth};
+  max-width: var(--max-width);
   margin: auto;
 `;
 
-const Page = ({ children, location }) => (
+const Page = ({ children, location, loading }) => (
   <ThemeProvider theme={siteTheme}>
     <>
       <GlobalStyles />
       <Meta />
       {location !== 'sign-in' && <Header />}
-      <Main>{children}</Main>
+      <Loading loading={loading}>
+        <Main>{children}</Main>
+      </Loading>
     </>
   </ThemeProvider>
 );
@@ -25,6 +28,7 @@ const Page = ({ children, location }) => (
 Page.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 export default Page;

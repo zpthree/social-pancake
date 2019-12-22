@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-import { gql, useMutation } from '@apollo/client';
+import Head from 'next/head';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 import dynamic from 'next/dynamic'; // (if using Next.js or use own dynamic loader)
-import '../public/styles/quill.css';
 import Page from '../components/Page';
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const CREATE_RECIPE_MUTATION = gql`
-  mutation CREATE_RECIPE_MUTATION($content: String!) {
-    createRecipe(content: $content) {
+  mutation CREATE_RECIPE_MUTATION(
+    $title: String!
+    $description: String!
+    $content: String!
+  ) {
+    createRecipe(title: $title, description: $description, content: $content) {
       id
       content
     }
@@ -16,17 +21,39 @@ const CREATE_RECIPE_MUTATION = gql`
 `;
 
 const CreateRecipePage = () => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [content, setContent] = useState('');
   const [createRecipe, { loading }] = useMutation(CREATE_RECIPE_MUTATION);
 
   return (
     <Page location="create-recipe">
+      <Head>
+        <link rel="stylesheet" type="text/css" href="/styles/quill.css" />
+      </Head>
       <h1>Create Recipe</h1>
+      <label htmlFor="recipeTitle">
+        <p>Title</p>
+        <input
+          id="recipeTitle"
+          type="text"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
+      </label>
+      <label htmlFor="recipeDescription">
+        <p>Description</p>
+        <textarea
+          id="recipeDescription"
+          value={description}
+          onChange={e => setDescription(e.target.value)}
+        />
+      </label>
       <ReactQuill value={content} onChange={data => setContent(data)} />
       <button
         type="submit"
         onClick={() => {
-          createRecipe({ variables: { content } });
+          createRecipe({ variables: { title, description, content } });
         }}
       >
         Submit

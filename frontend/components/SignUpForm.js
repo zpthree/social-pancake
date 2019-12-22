@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { CURRENT_USER_QUERY } from './Me';
 
 const CREATE_USER_QUERY = gql`
   mutation CREATE_USER_QUERY(
@@ -24,7 +26,7 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [createUser, { loading, error, data }] = useMutation(CREATE_USER_QUERY);
+  const [createUser, { loading }] = useMutation(CREATE_USER_QUERY);
 
   if (loading) return <p>Loading...</p>;
 
@@ -33,10 +35,10 @@ const SignUpForm = () => {
       method="post"
       onSubmit={async e => {
         e.preventDefault();
-        const user = await createUser({
+        await createUser({
           variables: { name, username, email, password },
+          refetchQueries: [{ query: CURRENT_USER_QUERY }],
         });
-        console.log(user);
       }}
     >
       <input

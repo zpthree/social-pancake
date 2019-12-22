@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
-import { gql, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import Loading from './Loading';
 
 const CURRENT_USER_QUERY = gql`
   query {

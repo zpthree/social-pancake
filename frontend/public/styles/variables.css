@@ -1,0 +1,15 @@
+:root {
+  --max-width: 1600px;
+
+  /* colors */
+  --green: #228151;
+
+  /* whites and greys (blacks) */
+  --black: #272727;
+  --darkgrey: #888;
+  --darkoffwhite: #f2f2f2;
+  --grey: #aaa;
+  --lightgrey: #ccc;
+  --offwhite: #f9f9f9;
+  --white: #fefefe;
+}

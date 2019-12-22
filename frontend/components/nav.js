@@ -13,7 +13,7 @@ const NavStyles = styled.nav`
 
 const Nav = () => (
   <Me>
-    {({ data }) => console.log(data) || (
+    {({ data }) => (
       <NavStyles>
         <Link href="/">
           <a>Home</a>
@@ -31,7 +31,14 @@ const Nav = () => (
             <a>Sign In</a>
           </Link>
         )}
-        {data?.me && <SignOut />}
+        {data?.me && (
+          <>
+            <SignOut />
+            <Link href="/u/[slug]" as={`/u/${data.me.username}`}>
+              <a>{data.me.name}</a>
+            </Link>
+          </>
+        )}
       </NavStyles>
     )}
   </Me>

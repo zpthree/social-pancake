@@ -1,27 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import Router, { withRouter } from 'next/router';
+import Router from 'next/router';
 import NProgress from 'nprogress';
 import Nav from './Nav';
 
-Router.onRouteChangeStart = () => {
-  NProgress.start();
-};
+Router.onRouteChangeStart = () => NProgress.start();
 
-Router.onRouteChangeComplete = () => {
-  NProgress.done();
-};
+Router.onRouteChangeComplete = () => NProgress.done();
 
-Router.onRouteChangeError = () => {
-  NProgress.done();
-};
+Router.onRouteChangeError = () => NProgress.done();
 
 const HeaderStyles = styled.header`
-  background: blue;
+  background: var(--green);
   height: 7rem;
   width: 100%;
   padding: 0.5rem 1rem;
-  color: white;
+  color: var(--white);
 
   h1 {
     margin: 0;

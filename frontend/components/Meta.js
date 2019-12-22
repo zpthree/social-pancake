@@ -6,7 +6,8 @@ const Meta = () => (
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charSet="utf-8" />
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/nprogress.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/variables.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/nprogress.css" />
     <title>Social Pancake</title>
   </Head>
 );

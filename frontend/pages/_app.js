@@ -1,9 +1,8 @@
 import 'isomorphic-unfetch';
 import React from 'react';
 import App from 'next/app';
-import { ApolloProvider } from '@apollo/client';
-import client from '../lib/createClient';
-import '../public/styles/nprogress.css';
+import { ApolloProvider } from '@apollo/react-hooks';
+import initApolloClient from '../lib/initApolloClient';
 
 class MyApp extends App {
   static async getInitialProps(appContext) {
@@ -13,6 +12,7 @@ class MyApp extends App {
   }
 
   render() {
+    const client = initApolloClient();
     const { Component, pageProps } = this.props;
 
     return (
