@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@apollo/client": "^3.0.0-beta.14",
+    "@apollo/client": "^3.0.0-beta.36",
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@babel/polyfill": "^7.7.0",
     "@zeit/next-css": "^1.0.1",
@@ -29,6 +29,7 @@
     "@babel/preset-env": "^7.7.6",
     "babel-eslint": "^10.0.1",
     "babel-plugin-styled-components": "^1.10.6",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-wesbos": "0.0.17",
@@ -36,9 +37,8 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react-hooks": "^1.4.0",
     "eslint-plugin-react": "^7.12.4",
-    "eslint": "^5.16.0",
+    "eslint-plugin-react-hooks": "^1.4.0",
     "prettier": "^1.16.4"
   }
 }
